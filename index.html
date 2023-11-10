@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/style.css"> 
+    <link rel="stylesheet" href="styles/toogle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <title>Bienvenido a mi Formulario</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+</head>
+<body>
+    <div class="container-form sign-up">
+        <div class="welcome-back">
+            <div class="message">
+                <h2>Bienvenido a nuestro tracker</h2>
+                <p>Si ya tienes una cuenta, inicia sesión aquí</p>
+                <button class="sign-in-btn" onclick="iniciarSesion('sign-in')">Iniciar Sesión</button>
+            </div>
+        </div>
+        <form class="formulario">
+            <h2 class="create-account">Crear una cuenta</h2>
+            <div class="iconos">
+                <div class="border-icon">
+                    <i class='bx bxl-instagram'></i>
+                </div>
+                <div class="border-icon">
+                    <i class='bx bxl-linkedin'></i>
+                </div>
+                <div class="border-icon">
+                    <i class='bx bxl-facebook-circle'></i>
+                </div>
+            </div>
+            <p class="cuenta-gratis">Crear una cuenta gratis</p>
+            <input type="text" placeholder="Nombre de la empresa" id="nombre_empresa">
+            <input type="email" placeholder="ID" id="Id_Empresa">
+            <input type="password" placeholder="Contraseña" id="password">
+            <button type="button" onclick="guardaregistros()">Registrarse</button>
+        </form>
+    </div>
+    <div class="container-form sign-in">
+        <form id="loginForm" class="formulario">
+            <h2 class="create-account">Iniciar Sesión</h2>
+            <div class="iconos">
+                <div class="border-icon">
+                    <i class='bx bxl-instagram'></i>
+                </div>
+                <div class="border-icon">
+                    <i class='bx bxl-linkedin'></i>
+                </div>
+                <div class="border-icon">
+                    <i class='bx bxl-facebook-circle'></i>
+                </div>
+            </div>
+            <p class="cuenta-gratis">¿Aún no tienes una cuenta?</p>
+
+            <form id="loginForm">
+                <label for="username">Usuario:</label>
+                <input type="text" id="username" name="username" required><br>
+        
+                <label for="password">Contraseña:</label>
+                <input type="password" id="passwordlg" name="password" required><br>
+        
+                <button type="submit">Iniciar Sesión</button>
+            </form>
+        </form>
+        <div class="welcome-back">
+            <div class="message">
+                <h2>Bienvenido de nuevo</h2>
+                <p>Si aún no tienes una cuenta, regístrate aquí</p>
+                <button class="sign-up-btn" onclick="mostrarFormulario('sign-up')">Registrarse</button>
+            </div>
+        </div>
+    </div>
+    <div id="loading-screen">
+        <div id="loading-indicator"></div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>

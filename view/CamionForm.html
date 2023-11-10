@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba Front</title>
+    <link rel="stylesheet" href="../styles/stylemapa.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link " aria-current="page" href="./mapa.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="./CamionForm.html">Camiones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./PilotoForm.html">Pilotos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./ViajeForm.html">Viajes</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</head>
+
+<body>
+    <main class="container">
+        <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis bg-body-secondary">
+            <div class="col-lg-6 px-0">
+                <h1 class="display-4 fst-italic">Listado de Camiones</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <button type="button" class="btn btn-primary mb-2 col-sm-1 col-md-1" data-bs-toggle="modal"
+                data-bs-target="#MdlForm"> Agregar </button>
+        </div>
+
+        <!-- Button trigger modal -->
+        <div class="row g-0 text-center">
+            <div class="col-sm-6 col-md-12">
+
+                <!-- Modal -->
+                <div class="modal fade" id="MdlForm" tabindex="-1" aria-labelledby="MdlForm" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="MdlFormH">Registro Camion</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Cancelar"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="row g-3" id="POST">
+
+                                    <div class="col-md-4">
+                                        <div class="col">
+                                            <input type="text" id="txtmarca" class="form-control" placeholder="Marca"
+                                                aria-label="Marca">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="col">
+                                            <input type="text" id="txtno_chasis" class="form-control" placeholder="No. Chasis"
+                                                aria-label="No. Chasis">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <input type="text" id="txtplaca_camion" class="form-control" placeholder="Placa Camion"
+                                            aria-label="Placa Camion">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button id="btenviar" type="button" class="btn btn-primary"
+                                    onclick="PostDatos();">Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="MdlForm2" tabindex="-1" aria-labelledby="MdlForm" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="MdlFormH">Actualizacion Camion</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Cancelar"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="row g-3" id="PUT">
+                                    <div class="col-md-4">
+                                        <div class="col">
+                                            <input type="text" id="txtIDU" class="form-control"
+                                                placeholder="Identificador" aria-label="Identificador">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="col">
+                                            <input type="text" id="txtmarcaU" class="form-control" placeholder="Marca"
+                                                aria-label="Marca">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="col">
+                                            <input type="text" id="txtno_chasisU" class="form-control" placeholder="No. Chasis"
+                                                aria-label="No. Chasis">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <input type="text" id="txtplaca_camionU" class="form-control" placeholder="Placa Camion"
+                                            aria-label="Placa Camion">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button id="btenviar" type="button" class="btn btn-primary"
+                                    onclick="PUTDatos();">Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">ID Empresa</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">No. Chasis</th>
+                    <th scope="col">Placa Camion</th>
+                </tr>
+            </thead>
+            <tbody id="tablebody">
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td id="HombresT">Otto</td>
+                    <td id="HombresP">@mdo</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td id="MujeresT">Thornton</td>
+                    <td id="MujeresP">@fat</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td colspan="2">Larry the Bird</td>
+                    <td>@twitter</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </main>
+
+    <button id="theme-toggle" class="btn btn-primary position-fixed bottom-0 end-0 m-3">Toggle Dark Mode</button>
+
+</body>
+<script src="../Js/CallCamiones.js"></script>
+
+</html>
