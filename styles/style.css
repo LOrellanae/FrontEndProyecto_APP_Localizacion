@@ -245,4 +245,14 @@ body {
     .formulario input {
         width: 80%; /* Ajustar el ancho de los campos de entrada en pantallas pequeñas */
     }
+
+    .container-form {
+        width: 90%;
+        height: 90vh;
+        display: flex;
+        transition: all .5s ease-out;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    }
 }

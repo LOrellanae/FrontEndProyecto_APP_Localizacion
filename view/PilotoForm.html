@@ -87,20 +87,20 @@
                                     </div>
                                     <div class="col-md-8">
                                         <div class="col">
-                                            <input type="text" id="txtapellidos" class="form-control" placeholder="Apellidos"
-                                                aria-label="Apellidos">
+                                            <input type="text" id="txtapellidos" class="form-control"
+                                                placeholder="Apellidos" aria-label="Apellidos">
                                         </div>
                                     </div>
                                     <div class="col-md-8">
                                         <div class="col">
-                                            <input type="text" id="txtlicencia" class="form-control" placeholder="Licencia"
-                                                aria-label="Licencia">
+                                            <input type="text" id="txtlicencia" class="form-control"
+                                                placeholder="Licencia" aria-label="Licencia">
                                         </div>
                                     </div>
 
                                     <div class="col-12">
-                                        <input type="text" id="txtdireccion" class="form-control" placeholder="Direccion"
-                                            aria-label="Direccion">
+                                        <input type="text" id="txtdireccion" class="form-control"
+                                            placeholder="Direccion" aria-label="Direccion">
                                     </div>
                                 </form>
                             </div>
@@ -143,20 +143,20 @@
                                     </div>
                                     <div class="col-md-8">
                                         <div class="col">
-                                            <input type="text" id="txtapellidosU" class="form-control" placeholder="Apellidos"
-                                                aria-label="Apellidos">
+                                            <input type="text" id="txtapellidosU" class="form-control"
+                                                placeholder="Apellidos" aria-label="Apellidos">
                                         </div>
                                     </div>
                                     <div class="col-md-8">
                                         <div class="col">
-                                            <input type="text" id="txtlicenciaU" class="form-control" placeholder="Licencia"
-                                                aria-label="Licencia">
+                                            <input type="text" id="txtlicenciaU" class="form-control"
+                                                placeholder="Licencia" aria-label="Licencia">
                                         </div>
                                     </div>
 
                                     <div class="col-12">
-                                        <input type="text" id="txtdireccionU" class="form-control" placeholder="Direccion"
-                                            aria-label="Direccion">
+                                        <input type="text" id="txtdireccionU" class="form-control"
+                                            placeholder="Direccion" aria-label="Direccion">
                                     </div>
                                 </form>
                             </div>
@@ -171,48 +171,50 @@
             </div>
         </div>
 
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Nombres</th>
-                    <th scope="col">Apellidos</th>
-                    <th scope="col">DPI</th>
-                    <th scope="col">Licencia</th>
-                    <th scope="col">ID Empresa</th>
-                    <th scope="col">Direccion</th>
-                </tr>
-            </thead>
-            <tbody id="tablebody">
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td id="HombresT">Otto</td>
-                    <td id="HombresP">@mdo</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td id="MujeresT">Thornton</td>
-                    <td id="MujeresP">@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="overflow-x-auto">
+            <table class="table ">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombres</th>
+                        <th scope="col">Apellidos</th>
+                        <th scope="col">DPI</th>
+                        <th scope="col">Licencia</th>
+                        <th scope="col">ID Empresa</th>
+                        <th scope="col">Direccion</th>
+                    </tr>
+                </thead>
+                <tbody id="tablebody">
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td id="HombresT">Otto</td>
+                        <td id="HombresP">@mdo</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td id="MujeresT">Thornton</td>
+                        <td id="MujeresP">@fat</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td colspan="2">Larry the Bird</td>
+                        <td>@twitter</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
     </main>
+    <button id="toggleBtn" class="btn btn-primary position-fixed bottom-0 end-0 m-3">Toggle Dark Mode</button>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script src="../js/CallPiloto.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <button id="theme-toggle" class="btn btn-primary position-fixed bottom-0 end-0 m-3">Toggle Dark Mode</button>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 
