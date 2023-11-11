@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('El nombre de usuario es:', storedUsername);
 });
 
+//Metodo para obtener los datos
 function GetDatos() {
 
     url = "https://changeable-tooth-production.up.railway.app/api/piloto";
@@ -89,6 +90,7 @@ function GetDatos() {
         });
 }
 
+//Metodo para eliminar los datos
 function DeleteDatos(e) {
     const idempleado = e.target.id;
 
@@ -124,6 +126,7 @@ function DeleteDatos(e) {
     idempleado.disabled = false;
 }
 
+//Metodo para actualizar los datos
 function PUTDatos() {
     var id = document.getElementById("txtIDU");
     var id_empresa = storedUsername;
@@ -163,7 +166,7 @@ function PUTDatos() {
 
 }
 
-
+//Metodo para insertar los datos
 function PostDatos() {
     var nombre = document.getElementById("txtnombres");
     var DPI = document.getElementById("txtDPI");

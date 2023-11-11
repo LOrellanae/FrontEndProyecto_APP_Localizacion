@@ -103,42 +103,60 @@ function UbicacionMap() {
             if (data.length > 0) {
 
 
-                const DatosEmpresa = data.filter(function(elemento) {
+                const DatosEmpresa = data.filter(function (elemento) {
                     // Ajusta la condición según tu criterio de filtro
                     return elemento.id_empresa === storedUsername;
                 });
 
 
-                const datosPorPlaca = DatosEmpresa.reduce((acumulador, dato) => {
-                    const { placa_camion, fecha_Emision, hora_emision } = dato;
-                    const datetime = new Date(`${fecha_Emision}T${hora_emision}`);
 
+                const datosPorPlaca = DatosEmpresa.reduce((acumulador, dato) => {
+                    const { placa_camion, fecha_emision, hora_emision } = dato;
+                    const datetime = new Date(`${fecha_emision}T${hora_emision}`);
+                
                     if (!acumulador[placa_camion] || datetime > acumulador[placa_camion].datetime) {
                         acumulador[placa_camion] = {
                             ubicacion: dato,
                             datetime
                         };
                     }
-
+                
                     return acumulador;
                 }, {});
-
+                
                 console.log(datosPorPlaca);
                 
-                const ubicacionesMasRecientes = Object.values(datosPorPlaca).map(item => item.ubicacion);
+                // Encontrar la ubicación más reciente en todo el objeto
+                let ubicacionesMasRecientes = null;
+                let maxDatetime = null;
+                
+                for (const placa in datosPorPlaca) {
+                    if (!maxDatetime || datosPorPlaca[placa].datetime > maxDatetime) {
+                        maxDatetime = datosPorPlaca[placa].datetime;
+                        ubicacionesMasRecientes = {
+                            placa_camion: placa,
+                            ubicacion: datosPorPlaca[placa].ubicacion,
+                            datetime: maxDatetime
+                        };
+                    }
+                }
+                
+                console.log("Ubicación más reciente:", ubicacionesMasRecientes);
+                                
+
 
                 console.log(ubicacionesMasRecientes);
 
-                for (let index = 0; index < ubicacionesMasRecientes.length; index++) {
 
-                    let ubicacion = ubicacionesMasRecientes[index];
+                for (const placa in datosPorPlaca) {
 
-                    let marker = L.marker([ubicacionesMasRecientes[index].latitud, ubicacionesMasRecientes[index].longitud], { icon: iconMarker }).addTo(myMap);
+                    const ubicacion = datosPorPlaca[placa].ubicacion;
+                    let marker = L.marker([datosPorPlaca[placa].ubicacion.latitud, datosPorPlaca[placa].ubicacion.latitud], { icon: iconMarker }).addTo(myMap);
 
                     marker.on('click', function () {
                         mostrarDetallesEnTabla(ubicacion);
                         $('#miModal').modal('show');
-                        
+
                     });
 
                     markers.push(marker);
@@ -152,7 +170,7 @@ function UbicacionMap() {
 
 // mapa.js
 var storedUsername = "";
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Obtener el valor almacenado en sessionStorage
     storedUsername = sessionStorage.getItem('username');
 
@@ -160,7 +178,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 UbicacionMap();
-setInterval(UbicacionMap, 120000);
+setInterval(UbicacionMap, 15000);
 
 
 function toggleDarkMode() {
@@ -168,13 +186,13 @@ function toggleDarkMode() {
 
     // Alternar entre las clases de Bootstrap para el modo oscuro y claro
     if (body.classList.contains('dark-mode')) {
-      body.classList.remove('dark-mode');
-      document.documentElement.setAttribute('data-bs-theme', 'light');
+        body.classList.remove('dark-mode');
+        document.documentElement.setAttribute('data-bs-theme', 'light');
     } else {
-      body.classList.add('dark-mode');
-      document.documentElement.setAttribute('data-bs-theme', 'dark');
+        body.classList.add('dark-mode');
+        document.documentElement.setAttribute('data-bs-theme', 'dark');
     }
-  }
+}
 
-  // Asociar la función al botón
-  document.getElementById('toggleBtn').addEventListener('click', toggleDarkMode);
+// Asociar la función al botón
+document.getElementById('toggleBtn').addEventListener('click', toggleDarkMode);
