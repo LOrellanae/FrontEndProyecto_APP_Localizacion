@@ -153,7 +153,7 @@ function UbicacionMap() {
                 for (const placa in datosPorPlaca) {
 
                     const ubicacion = datosPorPlaca[placa].ubicacion;
-                    let marker = L.marker([datosPorPlaca[placa].ubicacion.latitud, datosPorPlaca[placa].ubicacion.latitud], { icon: iconMarker }).addTo(myMap);
+                    let marker = L.marker([datosPorPlaca[placa].ubicacion.latitud, datosPorPlaca[placa].ubicacion.longitud], { icon: iconMarker }).addTo(myMap);
 
                     marker.on('click', function () {
                         mostrarDetallesEnTabla(ubicacion);
