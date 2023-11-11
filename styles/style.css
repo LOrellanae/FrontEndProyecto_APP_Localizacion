@@ -255,4 +255,12 @@ body {
         justify-content: space-around;
         align-items: center;
     }
+
+    .formulario {
+        width: 350px;
+        padding: 1rem;
+        margin: 2rem;
+        background-color: rgba(51, 51, 51, 0.602);
+        text-align: center;
+    }
 }
