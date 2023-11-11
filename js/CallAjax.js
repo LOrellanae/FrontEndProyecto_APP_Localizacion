@@ -111,13 +111,14 @@ function UbicacionMap() {
 
 
                 const datosPorPlaca = DatosEmpresa.reduce((acumulador, dato) => {
-                    const { placa_camion, fecha_emision, hora_emision } = dato;
+                    const { placa_camion, id_historial, fecha_emision, hora_emision } = dato;
                     const datetime = new Date(`${fecha_emision}T${hora_emision}`);
                 
-                    if (!acumulador[placa_camion] || datetime > acumulador[placa_camion].datetime) {
+                    if (!acumulador[placa_camion] || id_historial > acumulador[placa_camion].id_historial) {
                         acumulador[placa_camion] = {
                             ubicacion: dato,
-                            datetime
+                            datetime,
+                            id_historial
                         };
                     }
                 
@@ -128,15 +129,16 @@ function UbicacionMap() {
                 
                 // Encontrar la ubicación más reciente en todo el objeto
                 let ubicacionesMasRecientes = null;
-                let maxDatetime = null;
+                let maxIdHistorial = null;
                 
                 for (const placa in datosPorPlaca) {
-                    if (!maxDatetime || datosPorPlaca[placa].datetime > maxDatetime) {
-                        maxDatetime = datosPorPlaca[placa].datetime;
+                    if (!maxIdHistorial || datosPorPlaca[placa].id_historial > maxIdHistorial) {
+                        maxIdHistorial = datosPorPlaca[placa].id_historial;
                         ubicacionesMasRecientes = {
                             placa_camion: placa,
                             ubicacion: datosPorPlaca[placa].ubicacion,
-                            datetime: maxDatetime
+                            datetime: datosPorPlaca[placa].datetime,
+                            id_historial: maxIdHistorial
                         };
                     }
                 }
